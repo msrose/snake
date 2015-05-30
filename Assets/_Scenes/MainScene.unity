@@ -130,6 +130,10 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 124698, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
   m_IsPrefabParent: 0

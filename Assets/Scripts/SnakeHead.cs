@@ -6,9 +6,10 @@ public class SnakeHead : MonoBehaviour {
     public GameObject SnakeBodyPrefab;
     public GameObject bodyBegin;
     public GameObject bodyEnd;
-    private Direction dir = Direction.NORTH;
+    private Direction dir;
     private Direction nextDir;
 
+	bool isDead;
 
     private int curFrame;
 
@@ -23,10 +24,17 @@ public class SnakeHead : MonoBehaviour {
 	    /* Start with multiple heads*/
         this.curFrame = 0;
         this.startPosition = this.transform.position;
+		dir = Direction.NONE;
+		nextDir = Direction.NONE;
+		isDead = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (isDead) {
+			ResetPosition();
+			isDead = false;
+		}
 
         curFrame++;
 
@@ -87,14 +95,19 @@ public class SnakeHead : MonoBehaviour {
         }
 
         this.transform.position = position;
-
+		
         if (bodyBegin != null) {
             bodyBegin.GetComponent<SnakeBody>().BodyUpdate();
         }
 	}
 
     void ResetPosition() {
-        this.transform.position = this.startPosition;
+		this.dir = Direction.NONE;
+		this.nextDir = Direction.NONE;
+		this.transform.position = this.startPosition;
+
+		bodyBegin.GetComponent<SnakeBody>().ChangeDirection(this.dir);
+		bodyBegin.GetComponent<SnakeBody> ().ResetPosition (this.transform.position);
     }
     
     void ExtendBody() {
@@ -145,7 +158,11 @@ public class SnakeHead : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        Debug.Log("Collision Detected");
+        if(col.CompareTag("Obstacle")) {
+			isDead = true;
+		} else if(col.CompareTag("Food")) {
+			ExtendBody();
+		}
     }
 }
 
