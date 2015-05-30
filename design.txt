@@ -1,1 +1,28 @@
-Info
+Linked List - The Game!
+
+Snake
+	- Snake body prefab
+		- Collision detection (add script to new objects at runtime)
+	- Make the snake
+	Script
+		- move snake
+		- collision check
+			- snake body
+			- pickup
+				- add body to end
+			- wall (death)
+	Tags
+		- death tag
+		- pickup tag
+		
+Pickups
+	- Collision
+		- Destroy self
+
+
+
+
+Future Iterations
+	- Expand playfield when snake gets bigger
+	- Malleable playfield
+	- Bi-directional snake
