@@ -90,14 +90,14 @@ public class SnakeHead : MonoBehaviour {
     void ResetPosition() {
         this.transform.position = this.startPosition;
     }
-    /*
-    void extendBody() {
-        Instantiate()
-        SnakeBody newPart = new SnakeBody();
-        bodyEnd.next = blah;
-        bodyEnd.End = blah;
+    
+    void ExtendBody() {
+        //Instantiate()
+        //SnakeBody newPart = new SnakeBody();
+        //bodyEnd.next = blah;
+        //bodyEnd.End = blah;
     }
-    *
+    /*
 
     void OnCollisionEnter2D(Collision2D col) {
         Debug.Log("Collision!");
