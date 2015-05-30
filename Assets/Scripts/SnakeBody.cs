@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SnakeBody : MonoBehaviour {
 
-    public SnakeBody next;
+    public GameObject next;
     public Direction dir;
 
 	// Use this for initialization
@@ -37,13 +37,13 @@ public class SnakeBody : MonoBehaviour {
         this.transform.position = position;
 
         if (this.next != null) {
-            this.next.BodyUpdate();
+            this.next.GetComponent<SnakeBody>().BodyUpdate();
         }
 	}
 
     public void ChangeDirection(Direction dir) {
         if (this.next != null) {
-            this.next.ChangeDirection(this.dir);
+            this.next.GetComponent<SnakeBody>().ChangeDirection(this.dir);
         }
         this.dir = dir;
     }

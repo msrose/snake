@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SnakeHead : MonoBehaviour {
 
+    public GameObject SnakeBodyPrefab;
     public GameObject bodyBegin;
     public GameObject bodyEnd;
     private Direction dir = Direction.NORTH;
@@ -11,9 +12,9 @@ public class SnakeHead : MonoBehaviour {
 
     private int curFrame;
 
-    public int gridSize = 5;
-    public static float speed = 0.25F;
-    public static float bodySep = 1.25f;
+    public static int gridSize = 5;
+    public static float bodySep = 1f;
+    public static float speed = bodySep/gridSize;
 
     private Vector3 startPosition;
 
@@ -55,7 +56,11 @@ public class SnakeHead : MonoBehaviour {
 
         if (curFrame == gridSize) {
             curFrame = 0;
-            bodyBegin.GetComponent<SnakeBody>().ChangeDirection(this.dir);
+
+            if (bodyBegin != null) {
+                bodyBegin.GetComponent<SnakeBody>().ChangeDirection(this.dir);
+            }
+            
             this.dir = this.nextDir;
         }
 
@@ -83,8 +88,9 @@ public class SnakeHead : MonoBehaviour {
 
         this.transform.position = position;
 
-
-        bodyBegin.GetComponent<SnakeBody>().BodyUpdate();
+        if (bodyBegin != null) {
+            bodyBegin.GetComponent<SnakeBody>().BodyUpdate();
+        }
 	}
 
     void ResetPosition() {
@@ -92,18 +98,51 @@ public class SnakeHead : MonoBehaviour {
     }
     
     void ExtendBody() {
-        //Instantiate()
-        //SnakeBody newPart = new SnakeBody();
-        //bodyEnd.next = blah;
-        //bodyEnd.End = blah;
-    }
-    /*
+        Vector3 position;
+        GameObject obj;
+        Direction d;
 
-    void OnCollisionEnter2D(Collision2D col) {
-        Debug.Log("Collision!");
-        this.nextDir = Direction.NONE;
+        if (bodyEnd == null) {
+            position = this.transform.position;
+            d = this.dir;
+        } else {
+            position = this.bodyEnd.transform.position;
+            d = this.bodyEnd.GetComponent<SnakeBody>().dir;
+        }
+
+        switch (d) {
+            case Direction.NORTH:
+                position.y -= bodySep;
+                break;
+            case Direction.WEST:
+                position.x += bodySep;
+                break;
+            case Direction.EAST:
+                position.x -= bodySep;
+                break;
+            case Direction.SOUTH:
+                position.y += bodySep;
+                break;
+            case Direction.NONE:
+                break;
+            default:
+                Debug.Log("Wut");
+                break;
+        }
+
+        obj = Instantiate(SnakeBodyPrefab, position, Quaternion.identity) as GameObject;
+        SnakeBody back = obj.GetComponent<SnakeBody>();
+        back.next = null;
+        back.dir = d;
+        
+        if (this.bodyBegin == null) {
+            this.bodyBegin = obj;
+        } else {
+            this.bodyEnd.GetComponent<SnakeBody>().next = obj; 
+        }
+
+        this.bodyEnd = obj;
     }
-        */
 
     void OnTriggerEnter2D(Collider2D col) {
         Debug.Log("Collision Detected");
