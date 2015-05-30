@@ -165,8 +165,7 @@ public class SnakeHead : MonoBehaviour {
     }
 
 	void GenerateFood(){
-		Vector3 position = new Vector3 (Random.Range(-9, 9), Random.Range(-9, 9), 0);
-		Instantiate(FoodPrefab, position, Quaternion.identity);
+		Instantiate(FoodPrefab, Vector3.zero , Quaternion.identity);
 	}
 
     void OnTriggerEnter2D(Collider2D col) {
