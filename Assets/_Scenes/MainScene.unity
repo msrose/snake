@@ -297,6 +297,10 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11408972, guid: 6a3124e19a8656f4b97fceb615b60ad3, type: 2}
+      propertyPath: FoodPrefab
+      value: 
+      objectReference: {fileID: 119018, guid: 590f5d7132c9b0b4da10da7db82a9333, type: 2}
     m_RemovedComponents:
     - {fileID: 5034990, guid: 6a3124e19a8656f4b97fceb615b60ad3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6a3124e19a8656f4b97fceb615b60ad3, type: 2}

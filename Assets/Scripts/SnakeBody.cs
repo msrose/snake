@@ -49,6 +49,13 @@ public class SnakeBody : MonoBehaviour {
 		this.transform.position = position;
 	}
 
+	public void DeleteBody(){
+		if (this.next != null) {
+			this.next.GetComponent<SnakeBody>().DeleteBody();
+		}
+		Destroy (this.gameObject);
+	}
+
     public void ChangeDirection(Direction dir) {
         if (this.next != null) {
             this.next.GetComponent<SnakeBody>().ChangeDirection(this.dir);

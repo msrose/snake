@@ -4,6 +4,7 @@ using System.Collections;
 public class SnakeHead : MonoBehaviour {
 
     public GameObject SnakeBodyPrefab;
+	public GameObject FoodPrefab;
     public GameObject bodyBegin;
     public GameObject bodyEnd;
     private Direction dir;
@@ -106,7 +107,10 @@ public class SnakeHead : MonoBehaviour {
 		this.nextDir = Direction.NONE;
 		this.transform.position = this.startPosition;
 
-		bodyBegin.GetComponent<SnakeBody> ().ResetPosition (this.transform.position);
+		//bodyBegin.GetComponent<SnakeBody> ().ResetPosition (this.transform.position);
+		if (bodyBegin != null && bodyBegin.GetComponent<SnakeBody> () != null) {
+			bodyBegin.GetComponent<SnakeBody> ().DeleteBody ();
+		}
     }
     
     void ExtendBody() {
@@ -156,10 +160,17 @@ public class SnakeHead : MonoBehaviour {
         this.bodyEnd = obj;
     }
 
+	void GenerateFood(){
+		Vector3 position = new Vector3 (Random.Range(-9, 9), Random.Range(-9, 9), 0);
+		Instantiate(FoodPrefab, position, Quaternion.identity);
+	}
+
     void OnTriggerEnter2D(Collider2D col) {
         if(col.CompareTag("Obstacle")) {
 			isDead = true;
 		} else if(col.CompareTag("Food")) {
+			Destroy(col.gameObject);
+			GenerateFood();
 			ExtendBody();
 		}
     }
