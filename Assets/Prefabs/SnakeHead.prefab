@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21282086}
   - 61: {fileID: 6139538}
   - 50: {fileID: 5034990}
+  - 114: {fileID: 11408972}
   m_Layer: 0
   m_Name: SnakeHead
   m_TagString: Untagged
@@ -36,9 +37,9 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124698}
-  m_Mass: 1
+  m_Mass: 9.99999975e-05
   m_LinearDrag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 0
@@ -58,6 +59,20 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &11408972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb33c452762fae4ab1d377da80550f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyBegin: {fileID: 0}
+  bodyEnd: {fileID: 0}
+  gridSize: 5
 --- !u!212 &21282086
 SpriteRenderer:
   m_ObjectHideFlags: 1

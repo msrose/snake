@@ -97,8 +97,17 @@ public class SnakeHead : MonoBehaviour {
         bodyEnd.next = blah;
         bodyEnd.End = blah;
     }
-    */
+    *
 
+    void OnCollisionEnter2D(Collision2D col) {
+        Debug.Log("Collision!");
+        this.nextDir = Direction.NONE;
+    }
+        */
+
+    void OnTriggerEnter2D(Collider2D col) {
+        Debug.Log("Collision Detected");
+    }
 }
 
 
