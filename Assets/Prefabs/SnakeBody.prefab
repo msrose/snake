@@ -12,7 +12,7 @@ GameObject:
   - 61: {fileID: 6139538}
   - 50: {fileID: 5034990}
   m_Layer: 0
-  m_Name: Snake
+  m_Name: SnakeHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
