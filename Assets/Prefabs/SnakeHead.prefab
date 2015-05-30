@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 494096}
   - 212: {fileID: 21282086}
-  - 61: {fileID: 6139538}
   - 50: {fileID: 5034990}
   - 114: {fileID: 11408972}
+  - 58: {fileID: 5843880}
   m_Layer: 0
   m_Name: SnakeHead
   m_TagString: Untagged
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.30761933, y: -.891123891, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -46,8 +46,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6139538
-BoxCollider2D:
+--- !u!58 &5843880
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -56,9 +56,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: .360000014}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Radius: .058259964
 --- !u!114 &11408972
 MonoBehaviour:
   m_ObjectHideFlags: 1

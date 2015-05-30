@@ -78,15 +78,19 @@ public class SnakeHead : MonoBehaviour {
         switch (this.dir) {
             case Direction.NORTH:
                 position.y += speed;
+                this.transform.rotation = Quaternion.identity;
                 break;
             case Direction.WEST:
                 position.x -= speed;
+                this.transform.rotation = Quaternion.Euler(0, 0, 90);
                 break;
             case Direction.EAST:
                 position.x += speed;
+                this.transform.rotation = Quaternion.Euler(0, 0, 270);
                 break;
             case Direction.SOUTH:
                 position.y -= speed;
+                this.transform.rotation = Quaternion.Euler(0, 0, 180);
                 break;
             case Direction.NONE:
                 break;
@@ -173,6 +177,8 @@ public class SnakeHead : MonoBehaviour {
 			GenerateFood();
 			ExtendBody();
 		}
+
+        Debug.Log("Collision Detected!: " + col.name);
     }
 }
 
