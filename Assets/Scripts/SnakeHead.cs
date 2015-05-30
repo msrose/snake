@@ -106,7 +106,6 @@ public class SnakeHead : MonoBehaviour {
 		this.nextDir = Direction.NONE;
 		this.transform.position = this.startPosition;
 
-		bodyBegin.GetComponent<SnakeBody>().ChangeDirection(this.dir);
 		bodyBegin.GetComponent<SnakeBody> ().ResetPosition (this.transform.position);
     }
     

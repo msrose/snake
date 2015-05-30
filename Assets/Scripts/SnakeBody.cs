@@ -43,8 +43,9 @@ public class SnakeBody : MonoBehaviour {
 
 	public void ResetPosition(Vector3 position) {
 		if (this.next != null) {
-			this.next.ResetPosition(position);
+			this.next.GetComponent<SnakeBody>().ResetPosition(position);
 		}
+		this.dir = Direction.NONE;
 		this.transform.position = position;
 	}
 

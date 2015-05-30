@@ -70,9 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb33c452762fae4ab1d377da80550f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SnakeBodyPrefab: {fileID: 124698, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
   bodyBegin: {fileID: 0}
   bodyEnd: {fileID: 0}
-  gridSize: 5
 --- !u!212 &21282086
 SpriteRenderer:
   m_ObjectHideFlags: 1

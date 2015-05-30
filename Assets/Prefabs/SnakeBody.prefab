@@ -10,9 +10,10 @@ GameObject:
   - 4: {fileID: 494096}
   - 212: {fileID: 21282086}
   - 61: {fileID: 6139538}
+  - 114: {fileID: 11483410}
   m_Layer: 0
   m_Name: SnakeBody
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,11 +38,24 @@ BoxCollider2D:
   m_GameObject: {fileID: 124698}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &11483410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ac8899c00b62f428bc05e69ca44349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  next: {fileID: 0}
+  dir: 0
 --- !u!212 &21282086
 SpriteRenderer:
   m_ObjectHideFlags: 1

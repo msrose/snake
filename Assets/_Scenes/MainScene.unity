@@ -87,56 +87,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &199103432
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 417959832}
-    m_Modifications:
-    - target: {fileID: 494096, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 494096, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 494096, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 494096, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 494096, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 494096, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 494096, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 494096, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6139538, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 124698, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
-  m_IsPrefabParent: 0
 --- !u!4 &267393317 stripped
 Transform:
   m_PrefabParentObject: {fileID: 457354, guid: 2ab170660813f5e45bc482d4d3daa56a, type: 2}
@@ -213,7 +163,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1336555495}
-  - {fileID: 1556051762}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!1001 &717396701
@@ -339,11 +288,11 @@ Prefab:
     - target: {fileID: 11408972, guid: 6a3124e19a8656f4b97fceb615b60ad3, type: 2}
       propertyPath: bodyBegin
       value: 
-      objectReference: {fileID: 1696285587}
+      objectReference: {fileID: 0}
     - target: {fileID: 11408972, guid: 6a3124e19a8656f4b97fceb615b60ad3, type: 2}
       propertyPath: bodyEnd
       value: 
-      objectReference: {fileID: 1696285587}
+      objectReference: {fileID: 0}
     - target: {fileID: 6139538, guid: 6a3124e19a8656f4b97fceb615b60ad3, type: 2}
       propertyPath: m_IsTrigger
       value: 0
@@ -402,10 +351,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ab170660813f5e45bc482d4d3daa56a, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1556051762 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 494096, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
-  m_PrefabInternal: {fileID: 199103432}
 --- !u!1 &1558764254
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,23 +443,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 457354, guid: 2ab170660813f5e45bc482d4d3daa56a, type: 2}
   m_PrefabInternal: {fileID: 1352577318}
---- !u!1 &1696285587 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 124698, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
-  m_PrefabInternal: {fileID: 199103432}
---- !u!114 &1696285590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1696285587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0ac8899c00b62f428bc05e69ca44349, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  next: {fileID: 0}
-  dir: 0
 --- !u!1001 &1762834211
 Prefab:
   m_ObjectHideFlags: 0
