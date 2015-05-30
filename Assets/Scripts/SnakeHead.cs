@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class SnakeHead : MonoBehaviour {
 
@@ -7,8 +8,15 @@ public class SnakeHead : MonoBehaviour {
 	public GameObject FoodPrefab;
     public GameObject bodyBegin;
     public GameObject bodyEnd;
+	public Text scoreText;
+	public Text highScoreText;
+	public Text lastScoreText;
+
     private Direction dir;
     private Direction nextDir;
+	private int foodCount;
+	private int highScore;
+	private int lastScore;
 
 	bool isDead;
 
@@ -28,36 +36,49 @@ public class SnakeHead : MonoBehaviour {
 		dir = Direction.NONE;
 		nextDir = Direction.NONE;
 		isDead = false;
+		lastScoreText.gameObject.SetActive (false);
+		foodCount = 0;
+		highScore = 0;
+		lastScore = 0;
+		UpdateScores ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (isDead) {
 			ResetPosition();
+			lastScore = foodCount;
+			foodCount = 0;
+			UpdateScores();
 			isDead = false;
+			lastScoreText.gameObject.SetActive(true);
 		}
 
         curFrame++;
 
-        if (Input.GetKeyDown(KeyCode.W) && this.dir != Direction.SOUTH) {
+		if (Input.anyKeyDown) {
+			lastScoreText.gameObject.SetActive (false);
+		}
+
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && this.dir != Direction.SOUTH) {
             this.nextDir = Direction.NORTH;
         }
         
-        else if (Input.GetKeyDown(KeyCode.A) && this.dir != Direction.EAST) {
+		else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && this.dir != Direction.EAST) {
             this.nextDir = Direction.WEST;
         }
         
-        else if (Input.GetKeyDown(KeyCode.D) && this.dir != Direction.WEST) {
+		else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && this.dir != Direction.WEST) {
             this.nextDir = Direction.EAST;
         }
         
-        else if (Input.GetKeyDown(KeyCode.S) && this.dir != Direction.NORTH) {
+		else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && this.dir != Direction.NORTH) {
             this.nextDir = Direction.SOUTH;
         }
         
-        else if (Input.GetKeyDown(KeyCode.Space)) {
-            this.nextDir = Direction.NONE;
-        }
+//        else if (Input.GetKeyDown(KeyCode.Space)) {
+//            this.nextDir = Direction.NONE;
+//        }
 
         else if (Input.GetKeyDown(KeyCode.R)) {
             ResetPosition();
@@ -176,10 +197,19 @@ public class SnakeHead : MonoBehaviour {
 			Destroy(col.gameObject);
 			GenerateFood();
 			ExtendBody();
+			foodCount++;
+			if(foodCount > highScore) {
+				highScore = foodCount;
+			}
+			UpdateScores();
 		}
-
-        Debug.Log("Collision Detected!: " + col.name);
     }
+
+	void UpdateScores() {
+		scoreText.text = "Score: " + foodCount.ToString();
+		lastScoreText.text = "Your Score: " + lastScore.ToString ();
+		highScoreText.text = "Hight Score: " + highScore.ToString();
+	}
 }
 
 
