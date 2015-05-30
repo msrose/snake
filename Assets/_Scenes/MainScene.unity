@@ -293,9 +293,25 @@ Prefab:
       propertyPath: bodyEnd
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 6139538, guid: 6a3124e19a8656f4b97fceb615b60ad3, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Offset.y
+      value: .243877411
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: .0889110565
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Offset.x
+      value: .00920277648
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: .0428965501
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5034990, guid: 6a3124e19a8656f4b97fceb615b60ad3, type: 2}
