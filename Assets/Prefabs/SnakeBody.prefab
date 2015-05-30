@@ -10,10 +10,9 @@ GameObject:
   - 4: {fileID: 494096}
   - 212: {fileID: 21282086}
   - 61: {fileID: 6139538}
-  - 50: {fileID: 5034990}
   m_Layer: 0
-  m_Name: SnakeHead
-  m_TagString: Untagged
+  m_Name: SnakeBody
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,21 +29,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!50 &5034990
-Rigidbody2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124698}
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 0
-  m_FixedAngle: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
 --- !u!61 &6139538
 BoxCollider2D:
   m_ObjectHideFlags: 1
