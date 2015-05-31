@@ -11,6 +11,7 @@ public class SnakeHead : MonoBehaviour {
 	public Text scoreText;
 	public Text highScoreText;
 	public Text lastScoreText;
+	public InputField nameInputField;
 	public KeyCode up = KeyCode.W;
 	public KeyCode down = KeyCode.S;
 	public KeyCode left = KeyCode.A;
@@ -32,6 +33,7 @@ public class SnakeHead : MonoBehaviour {
 
 	public bool isDead;
 	bool speedUp;
+	bool enterName;
 
     private int curFrame;
 
@@ -63,6 +65,7 @@ public class SnakeHead : MonoBehaviour {
 		nextDir = Direction.NONE;
 		isDead = false;
 		lastScoreText.gameObject.SetActive (false);
+		nameInputField.gameObject.SetActive (false);
 		foodCount = 0;
 		highScore = 0;
 		lastScore = 0;
@@ -94,95 +97,103 @@ public class SnakeHead : MonoBehaviour {
 			UpdateScores();
 			isDead = false;
 			lastScoreText.gameObject.SetActive(true);
+			enterName = true;
+			nameInputField.gameObject.SetActive(true);
+			nameInputField.Select();
 		}
 
-        curFrame++;
+		if (enterName) {
+			if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)){
+				if(nameInputField.text != ""){
+					//Send to website
+					enterName = false;
+					nameInputField.text = "";
+					nameInputField.gameObject.SetActive(false);
+				}
+			}
+		} else {
 
-		if (Input.GetKey (goFast)) {
-			speedUp = true;
-		}
-		else{
-			speedUp = false;
-		}
+			curFrame++;
 
-		if (Input.anyKeyDown) {
-			lastScoreText.gameObject.SetActive (false);
-		}
+			if (Input.GetKey (goFast)) {
+				speedUp = true;
+			} else {
+				speedUp = false;
+			}
 
-        if (Input.GetKeyDown(up) && this.dir != Direction.SOUTH) {
-            this.nextDir = Direction.NORTH;
-        }
-        
-		else if ((Input.GetKeyDown(left)) && this.dir != Direction.EAST) {
-            this.nextDir = Direction.WEST;
-        }
-        
-		else if ((Input.GetKeyDown(right) ) && this.dir != Direction.WEST) {
-            this.nextDir = Direction.EAST;
-        }
-        
-		else if ((Input.GetKeyDown(down) ) && this.dir != Direction.NORTH) {
-            this.nextDir = Direction.SOUTH;
-        }
+			if (Input.anyKeyDown) {
+				lastScoreText.gameObject.SetActive (false);
+			}
+
+			if (Input.GetKeyDown (up) && this.dir != Direction.SOUTH) {
+				this.nextDir = Direction.NORTH;
+			} else if ((Input.GetKeyDown (left)) && this.dir != Direction.EAST) {
+				this.nextDir = Direction.WEST;
+			} else if ((Input.GetKeyDown (right)) && this.dir != Direction.WEST) {
+				this.nextDir = Direction.EAST;
+			} else if ((Input.GetKeyDown (down)) && this.dir != Direction.NORTH) {
+				this.nextDir = Direction.SOUTH;
+			}
         
 //        else if (Input.GetKeyDown(KeyCode.Space)) {
 //            this.nextDir = Direction.NONE;
 //        }
 
-        else if (Input.GetKeyDown(KeyCode.R)) {
-            ResetPosition();
-        }
-
-        if (curFrame == gridSize) {
-            curFrame = 0;
-
-			if(speedUp){
-				gridSize = 3;
-				speed = bodySep/gridSize;
-			}else{
-				gridSize = 5;
-				speed  = bodySep/gridSize;
+        else if (Input.GetKeyDown (KeyCode.R)) {
+				ResetPosition ();
 			}
 
-			if (bodyBegin != null) {
-				bodyBegin.GetComponent<SnakeBody>().UpdateSpeed(speed);
-				bodyBegin.GetComponent<SnakeBody>().ChangeDirection(this.dir);
-            }
+			if (curFrame == gridSize) {
+				curFrame = 0;
+
+				if (speedUp) {
+					gridSize = 3;
+					speed = bodySep / gridSize;
+				} else {
+					gridSize = 5;
+					speed = bodySep / gridSize;
+				}
+
+				if (bodyBegin != null) {
+					bodyBegin.GetComponent<SnakeBody> ().UpdateSpeed (speed);
+					bodyBegin.GetComponent<SnakeBody> ().ChangeDirection (this.dir);
+				}
             
-            this.dir = this.nextDir;
-        }
+				this.dir = this.nextDir;
+			}
 
-        Vector3 position = this.transform.position;
+			Vector3 position = this.transform.position;
 
-        switch (this.dir) {
-            case Direction.NORTH:
-                position.y += speed;
-                this.transform.rotation = Quaternion.identity;
-                break;
-            case Direction.WEST:
-                position.x -= speed;
-                this.transform.rotation = Quaternion.Euler(0, 0, 90);
-                break;
-            case Direction.EAST:
-                position.x += speed;
-                this.transform.rotation = Quaternion.Euler(0, 0, 270);
-                break;
-            case Direction.SOUTH:
-                position.y -= speed;
-                this.transform.rotation = Quaternion.Euler(0, 0, 180);
-                break;
-            case Direction.NONE:
-                break;
-            default:
-                Debug.Log("Wut");
-                break;
-        }
+			switch (this.dir) {
+			case Direction.NORTH:
+				position.y += speed;
+				this.transform.rotation = Quaternion.identity;
+				break;
+			case Direction.WEST:
+				position.x -= speed;
+				this.transform.rotation = Quaternion.Euler (0, 0, 90);
+				break;
+			case Direction.EAST:
+				position.x += speed;
+				this.transform.rotation = Quaternion.Euler (0, 0, 270);
+				break;
+			case Direction.SOUTH:
+				position.y -= speed;
+				this.transform.rotation = Quaternion.Euler (0, 0, 180);
+				break;
+			case Direction.NONE:
+				break;
+			default:
+				Debug.Log ("Wut");
+				break;
+			}
 
-        this.transform.position = position;
+			this.transform.position = position;
 		
-        if (bodyBegin != null) {
-            bodyBegin.GetComponent<SnakeBody>().BodyUpdate();
-        }
+			if (bodyBegin != null) {
+				bodyBegin.GetComponent<SnakeBody> ().BodyUpdate ();
+			}
+		}
 	}
 
     void ResetPosition() {
