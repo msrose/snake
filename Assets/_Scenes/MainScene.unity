@@ -315,6 +315,14 @@ Prefab:
       propertyPath: map
       value: 
       objectReference: {fileID: 1846657199}
+    - target: {fileID: 11408972, guid: 6a3124e19a8656f4b97fceb615b60ad3, type: 2}
+      propertyPath: goFast
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 11408972, guid: 6a3124e19a8656f4b97fceb615b60ad3, type: 2}
+      propertyPath: goSlow
+      value: 303
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3124e19a8656f4b97fceb615b60ad3, type: 2}
   m_IsPrefabParent: 0
