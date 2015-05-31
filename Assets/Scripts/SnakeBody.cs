@@ -8,7 +8,8 @@ public class SnakeBody : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        this.next = null;
+		this.next = null;
+		this.transform.localScale = new Vector3(SnakeHead.bodySep, SnakeHead.bodySep);
 	}
 	
 	public void BodyUpdate () {

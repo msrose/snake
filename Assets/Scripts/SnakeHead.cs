@@ -29,6 +29,18 @@ public class SnakeHead : MonoBehaviour {
     public static float speed = bodySep/gridSize;
 
     private Vector3 startPosition;
+	
+	
+	public void SetSize(float NewSize){
+		this.transform.localScale = new Vector3 (NewSize, NewSize);
+		SnakeHead.bodySep = NewSize;
+		SnakeHead.speed = bodySep/gridSize;
+		
+	}
+
+	public void SetLocalPosition(Vector3 pos){
+		this.transform.localPosition = pos;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -183,20 +195,14 @@ public class SnakeHead : MonoBehaviour {
         } else {
             this.bodyEnd.GetComponent<SnakeBody>().next = obj; 
         }
-
         this.bodyEnd = obj;
     }
-
-	void GenerateFood(){
-		Instantiate(FoodPrefab, Vector3.zero , Quaternion.identity);
-	}
 
     void OnTriggerEnter2D(Collider2D col) {
         if(col.CompareTag("Obstacle")) {
 			isDead = true;
 		} else if(col.CompareTag("Food")) {
-			Destroy(col.gameObject);
-			GenerateFood();
+			col.GetComponent<FoodScript>().RandomizeFood();
 			ExtendBody();
 			foodCount++;
 			if(foodCount > highScore) {
