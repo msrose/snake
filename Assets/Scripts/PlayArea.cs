@@ -23,10 +23,10 @@ public class PlayArea : MonoBehaviour {
 		NorthWall.transform.localScale = new Vector3(lengthWithWalls*CellSize,CellSize);
 		SouthWall.transform.localScale = new Vector3(lengthWithWalls*CellSize,CellSize);
 		
-		WestWall.transform.localPosition = new Vector3(CellSize*0.5f,MidY);
-		EastWall.transform.localPosition = new Vector3 ((lengthWithWalls - 0.5f)*CellSize, MidY);
-		NorthWall.transform.localPosition = new Vector3(MidX, (widthWithWalls - 0.5f)*CellSize);
-		SouthWall.transform.localPosition = new Vector3(MidX, CellSize*0.5f);
+		WestWall.transform.localPosition = new Vector3(CellSize*0.5f-MidX,0);
+		EastWall.transform.localPosition = new Vector3 ((lengthWithWalls - 0.5f)*CellSize-MidX, 0);
+		NorthWall.transform.localPosition = new Vector3(0, (widthWithWalls - 0.5f)*CellSize-MidY);
+		SouthWall.transform.localPosition = new Vector3(0, CellSize*0.5f-MidY);
 
 		Snake.GetComponent<SnakeHead> ().SetSize (CellSize);
 		Snake.GetComponent<SnakeHead> ().SetLocalPosition (getLocalPosition(GridLength / 2, GridWidth / 2));
@@ -36,13 +36,17 @@ public class PlayArea : MonoBehaviour {
 	}
 
 	public Vector3 getLocalPosition(int cellX, int cellY){
-		return new Vector3 ((cellX+0.5f)*CellSize, (cellY+0.5f)*CellSize);
+		int lengthWithWalls = GridLength + 2;
+		int widthWithWalls = GridWidth + 2;
+		float MidX = lengthWithWalls * (CellSize) * 0.5f;
+		float MidY = widthWithWalls*(CellSize)*0.5f;
+		return new Vector3 ((cellX+0.5f)*CellSize - MidX, (cellY+0.5f)*CellSize -MidY);
 	}
 
 	public Vector3 GetRandomCell(){
 		int cellX = Random.Range(1, GridLength);
 		int cellY = Random.Range(1, GridWidth);
-		return new Vector3 ((cellX+0.5f)*CellSize, (cellY+0.5f)*CellSize);
+		return getLocalPosition(cellX,cellY);
 	}
 
 	// Update is called once per frame
