@@ -71,8 +71,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SnakeBodyPrefab: {fileID: 124698, guid: 0b69a71302e68a546b6a5b940dffc43f, type: 2}
+  FoodPrefab: {fileID: 0}
   bodyBegin: {fileID: 0}
   bodyEnd: {fileID: 0}
+  scoreText: {fileID: 0}
+  highScoreText: {fileID: 0}
+  lastScoreText: {fileID: 0}
 --- !u!212 &21282086
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -97,7 +101,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 97ee6b407539a57428c65031a0f32fb7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 027ebe25c6b80f04aa65953714cb6b41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

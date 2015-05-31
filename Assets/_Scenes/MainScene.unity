@@ -196,10 +196,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 6174112, guid: 590f5d7132c9b0b4da10da7db82a9333, type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 590f5d7132c9b0b4da10da7db82a9333, type: 2}
   m_IsPrefabParent: 0
@@ -631,6 +627,7 @@ GameObject:
   - 92: {fileID: 1558764257}
   - 124: {fileID: 1558764256}
   - 81: {fileID: 1558764255}
+  - 45: {fileID: 1558764260}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -668,7 +665,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: .0204368476, g: .397058845, b: .0230342206, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -703,6 +700,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!45 &1558764260
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1558764254}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 314ffff6ec202a44d887a5bd75b84274, type: 2}
 --- !u!4 &1572684058 stripped
 Transform:
   m_PrefabParentObject: {fileID: 457354, guid: 2ab170660813f5e45bc482d4d3daa56a, type: 2}

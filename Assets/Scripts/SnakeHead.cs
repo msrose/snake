@@ -12,6 +12,8 @@ public class SnakeHead : MonoBehaviour {
 	public Text highScoreText;
 	public Text lastScoreText;
 
+	public Sprite[] sprites;
+
     private Direction dir;
     private Direction nextDir;
 	private int foodCount;
