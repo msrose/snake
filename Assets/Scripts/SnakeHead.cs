@@ -11,8 +11,18 @@ public class SnakeHead : MonoBehaviour {
 	public Text scoreText;
 	public Text highScoreText;
 	public Text lastScoreText;
+	public KeyCode up = KeyCode.W;
+	public KeyCode down = KeyCode.S;
+	public KeyCode left = KeyCode.A;
+	public KeyCode right = KeyCode.D;
+	public KeyCode goFast = KeyCode.Space;
+	public int cellX = 0;
+	public int cellY = 0;
+
 
 	public Sprite[] sprites;
+
+	public GameObject map;
 
     private Direction dir;
     private Direction nextDir;
@@ -20,14 +30,14 @@ public class SnakeHead : MonoBehaviour {
 	private int highScore;
 	private int lastScore;
 
-	bool isDead;
+	public bool isDead;
 	bool speedUp;
 
     private int curFrame;
 
-    public static int gridSize = 5;
+    public int gridSize;
     public static float bodySep = 1f;
-    public static float speed = bodySep/gridSize;
+    public float speed;
 
     private Vector3 startPosition;
 	
@@ -35,7 +45,7 @@ public class SnakeHead : MonoBehaviour {
 	public void SetSize(float NewSize){
 		this.transform.localScale = new Vector3 (NewSize, NewSize);
 		SnakeHead.bodySep = NewSize;
-		SnakeHead.speed = bodySep/gridSize;
+		this.speed = bodySep/gridSize;
 		
 	}
 
@@ -47,7 +57,8 @@ public class SnakeHead : MonoBehaviour {
 	void Start () {
 	    /* Start with multiple heads*/
         this.curFrame = 0;
-        this.startPosition = this.transform.position;
+		this.gridSize = 5;
+		this.speed = bodySep / this.gridSize;
 		dir = Direction.NONE;
 		nextDir = Direction.NONE;
 		isDead = false;
@@ -56,6 +67,22 @@ public class SnakeHead : MonoBehaviour {
 		highScore = 0;
 		lastScore = 0;
 		UpdateScores ();
+		PlayArea pa = (PlayArea)map.GetComponent<PlayArea> ();
+		float newSize = pa.CellSize;
+		SetSize (newSize);
+		if (cellX <= 0) {
+			cellX = pa.GridLength / 2;
+		}else if(cellX > pa.GridLength){
+			cellX = pa.GridLength;
+		}
+		if(cellY <=0 || cellY > pa.GridWidth){
+			cellY = pa.GridWidth / 2;
+		}else if(cellY > pa.GridWidth){
+			cellY = pa.GridWidth;
+		}
+
+		SetLocalPosition (pa.getLocalPosition(cellX, cellY));
+		this.startPosition = this.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -71,7 +98,7 @@ public class SnakeHead : MonoBehaviour {
 
         curFrame++;
 
-		if (Input.GetKey (KeyCode.Space)) {
+		if (Input.GetKey (goFast)) {
 			speedUp = true;
 		}
 		else{
@@ -82,19 +109,19 @@ public class SnakeHead : MonoBehaviour {
 			lastScoreText.gameObject.SetActive (false);
 		}
 
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && this.dir != Direction.SOUTH) {
+        if (Input.GetKeyDown(up) && this.dir != Direction.SOUTH) {
             this.nextDir = Direction.NORTH;
         }
         
-		else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && this.dir != Direction.EAST) {
+		else if ((Input.GetKeyDown(left)) && this.dir != Direction.EAST) {
             this.nextDir = Direction.WEST;
         }
         
-		else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && this.dir != Direction.WEST) {
+		else if ((Input.GetKeyDown(right) ) && this.dir != Direction.WEST) {
             this.nextDir = Direction.EAST;
         }
         
-		else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && this.dir != Direction.NORTH) {
+		else if ((Input.GetKeyDown(down) ) && this.dir != Direction.NORTH) {
             this.nextDir = Direction.SOUTH;
         }
         
@@ -117,8 +144,9 @@ public class SnakeHead : MonoBehaviour {
 				speed  = bodySep/gridSize;
 			}
 
-            if (bodyBegin != null) {
-                bodyBegin.GetComponent<SnakeBody>().ChangeDirection(this.dir);
+			if (bodyBegin != null) {
+				bodyBegin.GetComponent<SnakeBody>().UpdateSpeed(speed);
+				bodyBegin.GetComponent<SnakeBody>().ChangeDirection(this.dir);
             }
             
             this.dir = this.nextDir;
@@ -205,6 +233,7 @@ public class SnakeHead : MonoBehaviour {
         SnakeBody back = obj.GetComponent<SnakeBody>();
         back.next = null;
         back.dir = d;
+		back.UpdateSpeed (this.speed);
         
         if (this.bodyBegin == null) {
             this.bodyBegin = obj;

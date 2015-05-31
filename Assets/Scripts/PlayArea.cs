@@ -9,8 +9,6 @@ public class PlayArea : MonoBehaviour {
 	public GameObject EastWall;
 	public GameObject NorthWall;
 	public GameObject SouthWall;
-	public GameObject Snake;
-	public GameObject Food;
 
 	// Use this for initialization
 	void Start () {
@@ -28,11 +26,11 @@ public class PlayArea : MonoBehaviour {
 		NorthWall.transform.localPosition = new Vector3(0, (widthWithWalls - 0.5f)*CellSize-MidY);
 		SouthWall.transform.localPosition = new Vector3(0, CellSize*0.5f-MidY);
 
-		Snake.GetComponent<SnakeHead> ().SetSize (CellSize);
+		/*Snake.GetComponent<SnakeHead> ().SetSize (CellSize);
 		Snake.GetComponent<SnakeHead> ().SetLocalPosition (getLocalPosition(GridLength / 2, GridWidth / 2));
 		FoodScript food = Food.GetComponent<FoodScript> ();
 		food.RandomizeFood ();
-		food.transform.localScale = new Vector3 (CellSize, CellSize);
+		food.transform.localScale = new Vector3 (CellSize, CellSize);*/
 	}
 
 	public Vector3 getLocalPosition(int cellX, int cellY){

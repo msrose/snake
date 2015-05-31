@@ -6,6 +6,8 @@ public class SnakeBody : MonoBehaviour {
     public GameObject next;
     public Direction dir;
 
+	private float distPerFrame;
+
 	// Use this for initialization
 	void Start () {
 		this.next = null;
@@ -17,17 +19,17 @@ public class SnakeBody : MonoBehaviour {
 
         switch (dir) {
             case Direction.NORTH:
-                position.y += SnakeHead.speed;
+                position.y += distPerFrame;
                 break;
             case Direction.WEST:
-                position.x -= SnakeHead.speed;
-                break;
+				position.x -= distPerFrame;
+				break;
             case Direction.EAST:
-                position.x += SnakeHead.speed;
-                break;
+				position.x += distPerFrame;
+				break;
             case Direction.SOUTH:
-                position.y -= SnakeHead.speed;
-                break;
+				position.y -= distPerFrame;
+				break;
             case Direction.NONE:
                 break;
             default:
@@ -63,4 +65,11 @@ public class SnakeBody : MonoBehaviour {
         }
         this.dir = dir;
     }
+
+	public void UpdateSpeed(float DistPerFrame){
+		if (this.next != null) {
+			this.next.GetComponent<SnakeBody>().UpdateSpeed(DistPerFrame);
+		}
+		this.distPerFrame = DistPerFrame;
+	}
 }
