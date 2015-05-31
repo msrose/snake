@@ -5,26 +5,21 @@ using System.Collections;
 public class SoundControl : MonoBehaviour {
 
     private bool isVolumeOn = true;
-    private float lastVolume = -1F;
+    private float lastVolume = -1F;    
     
-    public Button soundButton;
-    public Sprite soundOff;
-    public Sprite soundOn;
-    
-    public void FlipSound() {
+    public void Update() {
+		if (Input.GetKeyDown (KeyCode.M)) {
+			if (isVolumeOn) {
+				AudioListener.pause = true;
+				lastVolume = AudioListener.volume;
+				AudioListener.volume = 0;
+			} else {
+				AudioListener.pause = false;
+				AudioListener.volume = lastVolume;
+			}
 
-        if (isVolumeOn) {
-            AudioListener.pause = true;
-            lastVolume = AudioListener.volume;
-            AudioListener.volume = 0;
-            soundButton.GetComponent<Image>().sprite = soundOff;
-        } else {
-            AudioListener.pause = false;
-            AudioListener.volume = lastVolume;
-            soundButton.GetComponent<Image>().sprite = soundOn;
-        }
-
-        isVolumeOn = !isVolumeOn;
-    }
+			isVolumeOn = !isVolumeOn;
+		}
+	}
 
 }
