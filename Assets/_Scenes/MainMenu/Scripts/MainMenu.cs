@@ -22,6 +22,11 @@ public class MainMenu : MonoBehaviour {
         Application.LoadLevel(1);
     }
 
+    public void MultiplayerClicked() {
+        Debug.Log("Multiplayer Clicked");
+        Application.LoadLevel(2);
+    }
+
     public void FlipSound() {
         
         if (isVolumeOn) {
