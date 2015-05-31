@@ -26,3 +26,9 @@ Future Iterations
 	- Expand playfield when snake gets bigger
 	- Malleable playfield
 	- Bi-directional snake
+	- Multiplayer
+		- Battle mode, when you eat food, it's added to opponent's tail
+	- Score counter
+	- website w/ counters
+	- nick cage sprites
+	- 
