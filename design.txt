@@ -27,6 +27,8 @@ Future Iterations
 	- Bi-directional snake
 	- Multiplayer
 		- Battle mode, when you eat food, it's added to opponent's tail
+			- Spawn two snakes
+			- multiple food pieces
 	- Score counter
 	- website w/ counters
 	- nick cage sprites
