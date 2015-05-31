@@ -112,7 +112,21 @@ public class SnakeHead : MonoBehaviour {
         if (enterName && nameInputField != null) {
 			if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)){
 				if(nameInputField.text != ""){
-					//Send to website
+					//Debug.Log("Before the request");
+					if(lastScore != 0) {
+						//Send to website
+						WWWForm form = new WWWForm();
+						form.AddField("name", nameInputField.text);
+						form.AddField("score", lastScore);
+						var headers = form.headers;
+						byte[] rawData = form.data;
+						string url = "http://snakeinthecage.herokuapp.com/highscores";
+						headers["Authorization"] = "bestsnakeappever";
+						
+						WWW www = new WWW(url, rawData, headers);
+						Debug.Log ("Trying to send data!");
+						//yield return www;
+					}
 					enterName = false;
 					nameInputField.text = "";
 					nameInputField.gameObject.SetActive(false);
@@ -144,6 +158,9 @@ public class SnakeHead : MonoBehaviour {
             } else if ((Input.GetKeyDown (down)) && this.dir != Direction.NORTH) {
                 this.nextDir = Direction.SOUTH;
             }
+			if(Input.GetKeyDown (KeyCode.Escape)){
+				Application.LoadLevel(0);
+			}
 
             if (curFrame == gridSize) {
                 curFrame = 0;
