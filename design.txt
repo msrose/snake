@@ -1,5 +1,6 @@
 Linked List - The Game!
 
+Basic Game Done!!!!!!!!!!!!!!!!!!!!!!
 Snake
 	- Snake body prefab
 		- Collision detection (add script to new objects at runtime)
@@ -18,8 +19,6 @@ Snake
 Pickups
 	- Collision
 		- Destroy self
-
-
 
 
 Future Iterations

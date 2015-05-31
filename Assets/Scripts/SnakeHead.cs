@@ -21,6 +21,7 @@ public class SnakeHead : MonoBehaviour {
 	private int lastScore;
 
 	bool isDead;
+	bool speedUp;
 
     private int curFrame;
 
@@ -70,6 +71,13 @@ public class SnakeHead : MonoBehaviour {
 
         curFrame++;
 
+		if (Input.GetKey (KeyCode.Space)) {
+			speedUp = true;
+		}
+		else{
+			speedUp = false;
+		}
+
 		if (Input.anyKeyDown) {
 			lastScoreText.gameObject.SetActive (false);
 		}
@@ -100,6 +108,14 @@ public class SnakeHead : MonoBehaviour {
 
         if (curFrame == gridSize) {
             curFrame = 0;
+
+			if(speedUp){
+				gridSize = 3;
+				speed = bodySep/gridSize;
+			}else{
+				gridSize = 5;
+				speed  = bodySep/gridSize;
+			}
 
             if (bodyBegin != null) {
                 bodyBegin.GetComponent<SnakeBody>().ChangeDirection(this.dir);
